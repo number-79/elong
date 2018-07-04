@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+				* {
+				padding: 0;
+				margin: 0;
+				list-style: none;
+			}
+			
+			.nav {
+				position: relative;
+				background: pink;
+			}
+			
+			.nav ul {
+				margin: 0;
+				padding: 0;
+			}
+			
+			.nav li {
+				margin: 0 5px 10px 0;
+				padding: 0;
+				list-style: none;
+				display: inline-block;
+			}
+			
+			.nav a {
+				padding: 3px 12px;
+				text-decoration: none;
+				color: #999;
+				line-height: 100%;
+			}
+			
+			.nav a:hover {
+				color: #d0d0d0;
+			}
+			
+			.nav .current a {
+				background: #999;
+				color: red;
+				border-radius: 5px;
+			}
+			/*使用text-align对菜单进行右对齐和居中对齐。*/
+			/* right nav */
+			
+			.nav.right ul {
+				text-align: right;
+			}
+			/* center nav */
+			
+			.nav.center ul {
+				text-align: center;
+			}
+			/*接下来我们来做响应式设计，我们使用CSS3的media query来实现。当浏览器窗口宽度小于600px时，
+			我们把<nav>设置成relative相对定位，把<ul>设置成absolute绝对定位，并且display:none
+			隐藏所有li元素，这个时候导航菜单变成一个固定大小的按钮。当鼠标滑向nav元素时，菜单下拉展开，设置所有li的样式
+			display: block，具体请看代码：
+			复制代码代码如下:*/
+			
+			@media screen and (max-width: 600px) {
+				.nav {
+					position: relative;
+					min-height: 40px;
+				}
+				.nav ul {
+					width: 180px;
+					padding: 5px 0;
+					position: absolute;
+					top: 0;
+					left: 0;
+					border: solid 1px #aaa;
+					background: red;
+					border-radius: 5px;
+					box-shadow: 0 1px 2px rgba(0, 0, 0, .3);
+				}
+				.nav li {
+					display: none;
+					/* hide all items */
+					margin: 0;
+				}
+				.nav .current {
+					display: block;
+					/* show only currentitem */
+				}
+				.nav a {
+					display: block;
+					padding: 5px 5px 5px 32px;
+					text-align: left;
+				}
+				.nav .current a {
+					background: none;
+					color: #666;
+				}
+				/* on nav hover */
+				.nav ul:hover {
+					background-image: none;
+				}
+				.nav ul:hover li {
+					display: block;
+					margin: 0 0 5px;
+				}
+				.nav ul:hover .current {
+					background: green;
+				}
+				/* right nav */
+				.nav.right ul {
+					left: auto;
+					right: 0;
+				}
+				/* center nav */
+				.nav.center ul {
+					left: 50%;
+					margin-left: -90px;
+				}
+		</style>
+	</head>
+
+	<body>
+		<div class="nav">
+			<ul>
+				<li class="current">
+					<a href="#">首页</a>
+				</li>
+				<li>
+					<a href="#">客户服务</a>
+				</li>
+				<li>
+					<a href="#">产品展示</a>
+				</li>
+				<li>
+					<a href="#">经典案例</a>
+				</li>
+				<li>
+					<a href="#">联系我们</a>
+				</li>
+			</ul>
+		</div>
+	</body>
+
+</html>
